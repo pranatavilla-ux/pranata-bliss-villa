@@ -15,7 +15,7 @@
         /* HERO */
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: 100svh; /* supaya tidak terpotong di HP */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,19 +23,18 @@
             text-shadow: 0 3px 8px rgba(0,0,0,0.7);
             overflow: hidden;
         }
-
+        
         .hero-bg {
             position: absolute;
             width: 100%;
             height: 100%;
-            height: 90vh
-            background-size: cover;
             object-fit: cover;
+            background-size: cover;
             filter: blur(6px) brightness(0.7);
             transform: scale(1.1);
             animation: zoomMove 12s infinite alternate ease-in-out;
         }
-
+        
         .hero::after {
             content: "";
             position: absolute;
@@ -43,11 +42,28 @@
             backdrop-filter: blur(6px) brightness(0.7);
             z-index: 1;
         }
-
+        
         .hero h1 {
             font-size: 50px;
             z-index: 2;
             text-align: center;
+        }
+        
+        /* MOBILE FIX */
+        @media (max-width: 600px) {
+            .hero {
+                min-height: 100svh;
+            }
+        
+            .hero-bg {
+                transform: scale(1.02);
+                animation: none;
+            }
+        
+            .hero h1 {
+                font-size: 32px;
+                padding: 0 15px;
+            }
         }
 
         @keyframes zoomMove {
@@ -206,6 +222,7 @@
 
 </body>
 </html>
+
 
 
 
